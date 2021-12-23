@@ -1,8 +1,11 @@
 package com.sbrf.reboot.calculator;
 
+import com.sbrf.reboot.Calculator;
+import com.sbrf.reboot.calculatorutils.InvalidBitwiseDirectionException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CalculatorTest {
 
@@ -24,6 +27,28 @@ class CalculatorTest {
     @Test
     void getDivision() {
         assertEquals(3, new Calculator().getDivision(9, 3));
+    }
+
+    @Test
+    void getRemainderOfDivisionShouldPassSuccess() {
+        assertEquals(1, new Calculator().getRemainderOfDivision(5, 2));
+    }
+
+    @Test
+    void getPowShouldPassSuccess() {
+        assertEquals(27, new Calculator().getPow(3, 3));
+    }
+
+    @Test
+    void getBitwiseShiftShouldThrowException() throws Exception {
+        assertThrows(
+                InvalidBitwiseDirectionException.class,
+                () -> new Calculator().getBitwiseShift(
+                        2,
+                        4,
+                        null
+                )
+        );
     }
 
     @Test
