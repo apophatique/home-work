@@ -1,7 +1,6 @@
 package com.sbrf.reboot.calculator;
 
-import com.sbrf.reboot.Calculator;
-import com.sbrf.reboot.calculatorutils.InvalidBitwiseDirectionException;
+import com.sbrf.reboot.calculator.calculatorutils.InvalidBitwiseDirectionException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

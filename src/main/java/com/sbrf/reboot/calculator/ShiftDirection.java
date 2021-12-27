@@ -1,4 +1,4 @@
-package com.sbrf.reboot.calculatorutils;
+package com.sbrf.reboot.calculator.calculatorutils;
 
 public enum ShiftDirection {
     LEFT,

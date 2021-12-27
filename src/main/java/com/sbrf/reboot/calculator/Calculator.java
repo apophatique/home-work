@@ -1,7 +1,7 @@
-package com.sbrf.reboot;
+package com.sbrf.reboot.calculator;
 
-import com.sbrf.reboot.calculatorutils.InvalidBitwiseDirectionException;
-import com.sbrf.reboot.calculatorutils.ShiftDirection;
+import com.sbrf.reboot.calculator.calculatorutils.InvalidBitwiseDirectionException;
+import com.sbrf.reboot.calculator.calculatorutils.ShiftDirection;
 
 /**
  * Класс, позволяющий выполнять некоторые арифметические операции.
@@ -10,7 +10,7 @@ public class Calculator {
     /**
      * Операция сложения
      *
-     * @param firstNum  - первое слагаемое
+     * @param firstNum  - перве слагаемое
      * @param secondNum - второе слагаемое
      * @return сумма
      */
