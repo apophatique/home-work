@@ -43,5 +43,31 @@ class FileAccountRepositoryTest {
         assertThrows(FileNotFoundException.class, () -> accountRepository.getAllAccountsByClientId(clientId));
     }
 
+    /**
+     * Тест для проверки задания на 5+.
+     *
+     * Перед выполнением убедится, что в Accounts.txt есть клиент с айди 3 и счетом 999
+     */
+    @Test
+    void shouldReplaceAccountClientWithId3() throws IOException {
+        String filePath = "src/main/resources/Accounts.txt";
+        accountRepository = new FileAccountRepository(filePath);
 
+        long clientId = 3;
+        long oldAccount = 999;
+        long newAccount = 123321;
+        Set<Long> expected = new HashSet<Long>() {{
+            add(newAccount);
+        }};
+
+        assertTrue(accountRepository.updateAccountNumber(
+                clientId,
+                oldAccount,
+                newAccount
+        ));
+
+
+        Set<Long> actualAccounts = accountRepository.getAllAccountsByClientId(clientId);
+        actualAccounts.forEach(e -> assertTrue(expected.contains(e)));
+    }
 }
