@@ -32,11 +32,12 @@ public class CollectionsTest {
     @Test
     public void addStudentToRating() {
 
-        final List<String> students = new ArrayList<>();
-        students.add("Иванов");
-        students.add("Петров");
-        students.add("Сидоров");
-        students.add("Козлов");
+        final List<String> students = new LinkedList<String>() {{
+            add("Иванов");
+            add("Петров");
+            add("Сидоров");
+        }};
+        students.add(0, "Козлов");      // или просто сделать stack
 
         assertEquals(4, students.size());
     }
@@ -78,10 +79,10 @@ public class CollectionsTest {
         class Book {
         }
 
-        final Map<Integer, Book> bookshelf = new HashMap<Integer, Book>() {{
-            put(0, new Book());
-            put(1, new Book());
-            put(2, new Book());
+        final List<Book> bookshelf = new LinkedList<Book>() {{
+            add(new Book());
+            add(new Book());
+            add(new Book());
         }};
 
         //...
