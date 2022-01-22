@@ -79,7 +79,11 @@ public class CollectionsTest {
         class Book {
         }
 
-        final List<Book> bookshelf = new LinkedList<Book>() {{
+        // если полка виртуальная, то конечно эрэй
+        // но изначально я думал, что должен быть какой-то порядок
+        // либо относительно мест на полке (Map)
+        // либо хотя бы относительно друг друга (LinkedList)
+        final List<Book> bookshelf = new ArrayList<Book>() {{
             add(new Book());
             add(new Book());
             add(new Book());
