@@ -2,6 +2,7 @@ package com.sbrf.reboot.concurrency;
 
 import com.sbrf.reboot.service.concurrency.Task;
 import com.sbrf.reboot.service.concurrency.TaskExecutorService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -34,5 +35,32 @@ public class TaskExecutorServiceTest {
         verify(task, times(2)).run();
 
         taskExecutorService.shutdown();
+    }
+
+    private static final int MAX_AVAILABLE_NUMBER_OF_THREADS = 10;
+    private static final int MIN_AVAILABLE_NUMBER_OF_THREADS = 1;
+
+    @Test
+    public void getNumberOfThreadsSuccessWithMoreThanMaxAvailable() {
+        Assertions.assertEquals(
+                MAX_AVAILABLE_NUMBER_OF_THREADS,
+                TaskExecutorService.getNumberOfTreads(11)
+        );
+    }
+
+    @Test
+    public void getNumberOfThreadsSuccessWithLessThanMinAvailable() {
+        Assertions.assertEquals(
+                MIN_AVAILABLE_NUMBER_OF_THREADS,
+                TaskExecutorService.getNumberOfTreads(-1)
+        );
+    }
+
+    @Test
+    public void getNumberOfThreadsSuccessWithNormalValue() {
+        Assertions.assertEquals(
+                6,
+                TaskExecutorService.getNumberOfTreads(6)
+        );
     }
 }
