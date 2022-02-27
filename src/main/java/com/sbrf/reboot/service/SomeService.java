@@ -20,8 +20,12 @@ public class SomeService {
             @Override
             public String call() throws Exception {
 
+                CompletableFuture<String> reportResult = CompletableFuture.supplyAsync(
+                        () -> reportService.sendReport("Отправляю отчет"),
+                        executor
+                );
+
                 // Реализуйте отправку отчета используя CompletableFuture
-                String reportResult = reportService.sendReport("Отправляю отчет");
 
                 //какой то код..
                 Thread.sleep(Duration.ofSeconds(3).toMillis());
